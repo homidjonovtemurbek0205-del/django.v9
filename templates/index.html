@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ loyiha_nomi }}</title>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'bosh_sahifa' %}">Bosh sahifa</a> |
+        <a href="{% url 'filmlar_royxati' %}">Filmlar</a> |
+        <a href="{% url 'film_qoshish' %}">Film qo'shish</a>
+    </nav>
+    <hr>
+
+    <main>
+        <h1>{{ loyiha_nomi }}</h1>
+
+        {% if jami_filmlar_soni %}
+            <p>Jami filmlar soni: {{ jami_filmlar_soni }}</p>
+            <p>Faol filmlar soni: {{ faol_filmlar_soni }}</p>
+            <h2>Eng yuqori reytingli 5 ta film:</h2>
+            <ul>
+                {% for film in eng_yuqori_reytingli_5_ta_film %}<li><a href="{% url 'film_detail' film.id %}">{{ film.nomi }}</a> (Reyting: {{ film.reyting }})</li>{% endfor %}
+            </ul>
+        {% else %}
+            <ul>
+                {% for film in filmlar %}<li><a href="{% url 'film_detail' film.id %}">{{ film.nomi }}</a> - {{ film.reyting }}</li>{% empty %}<li>{{ empty_message|default:"Filmlar topilmadi." }}</li>{% endfor %}
+            </ul>
+        {% endif %}
+    </main>
+
+</body>
+</html>

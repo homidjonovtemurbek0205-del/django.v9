@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ film.nomi }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'bosh_sahifa' %}">Bosh sahifa</a> |
+        <a href="{% url 'filmlar_royxati' %}">Filmlar</a> |
+        <a href="{% url 'film_qoshish' %}">Film qo'shish</a>
+    </nav>
+    <hr>
+
+    <main>
+        <h1>{{ film.nomi }}</h1>
+        <p><strong>Rejissyor:</strong> {{ film.rejissyor }}</p>
+        <p><strong>Chiqarilgan yili:</strong> {{ film.chiqarilgan_yil }}</p>
+        <p><strong>Janr:</strong> {{ film.janr }}</p>
+        <p><strong>Reyting:</strong> {{ film.reyting }}</p>
+        <p><strong>Qo'shilgan vaqti:</strong> {{ film.yaratilgan_vaqt }}</p>
+    </main>
+</body>
+</html>
